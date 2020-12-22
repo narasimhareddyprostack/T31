@@ -18,6 +18,14 @@ const PORT = 8000 || process.env.PORT;
 app.get("/", (req, res) => {
   res.send("<h1>ECart Application Running Successfully....</h1>");
 });
+//accept express - form data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use("/user", require("./router/userRouter"));
+// app.use("/product", require("./router/productRouter"));
+// app.use("/order", require("./router/orderRouter"));
+// app.use("/payment", require("./router/paymentRouter"));
 mongoose
   .connect(process.env.MONGODB_LOCAL_URL, {
     useUnifiedTopology: true,
