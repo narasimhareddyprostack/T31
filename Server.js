@@ -26,6 +26,7 @@ app.use("/user", require("./router/userRouter"));
 //app.use("/product", require("./router/productRouter"));
 // app.use("/order", require("./router/orderRouter"));
 // app.use("/payment", require("./router/paymentRouter"));
+//app.user();
 mongoose
   .connect(process.env.MONGODB_LOCAL_URL, {
     useUnifiedTopology: true,
