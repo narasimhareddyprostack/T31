@@ -43,24 +43,18 @@ Fields   : EMAIL, PASSWORD
 METHOD: post
 */
 router.post("/login", async (req, res) => {
-  //Get the data form
+  //Get the useer form data
   let { email, password } = req.body;
-
-  //verify the exited user or not
+  //verify the Register User or Not. (verify with Email)
   let user = await User.findOne({ email: email });
-
-  // if (user) {
-  //   //res.status(401).json({ error: "User Already Existed" });
-  // } else {
-  //   res.status(401).json({ error: "User Account not existed" });
-  // }
-  console.log(password);
-  console.log(user.password);
-  //verify the passwrod's
+  if (!user) {
+    return res.status(401).json({ error: "User Not Registered" });
+  }
+  //verify the passwrod
   let result = await bcrypt.compare(password, user.password);
   if (!result) {
     return res.status(401).json({
-      status: "Please Enter Proper Password",
+      status: "Password Not Match!",
     });
   }
   let payload = {
