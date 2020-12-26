@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 /*
 localhost:8000/user/register
 localhost:8000/user/login
-localhost:8000/user/all
+localhost:8000/user/all  
 */
 
 /*

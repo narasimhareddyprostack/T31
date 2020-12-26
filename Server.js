@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/user", require("./router/userRouter"));
-//app.use("/product", require("./router/productRouter"));
+app.use("/product", require("./router/productRouter"));
 // app.use("/order", require("./router/orderRouter"));
 // app.use("/payment", require("./router/paymentRouter"));
 //app.user();
