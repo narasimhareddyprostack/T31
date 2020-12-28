@@ -1,0 +1,8 @@
+localhost:8000/user/login        - POST 
+localhost:8000/user/register     - POST
+localhost:8000/prodcut/upload    - POST
+
+
+localhost:8000/product/watches   - GET 
+localhost:8000/product/laptops   - GET 
+localhost:8000/product/mobiles   - GET 
