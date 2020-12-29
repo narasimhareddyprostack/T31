@@ -38,6 +38,32 @@ let Navbar = () => {
                 Laptops
               </Link>
             </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/user/login">
+                Login
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link className="nav-link" to="/user/signup">
+                SignUp
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link className="nav-link" to="/user/profile">
+                Profile
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link className="nav-link" to="/user/profile">
+                Cart
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link className="nav-link" to="/product/upload">
+                Upload
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>
