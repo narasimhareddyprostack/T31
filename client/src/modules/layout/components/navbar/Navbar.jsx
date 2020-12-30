@@ -20,46 +20,49 @@ let Navbar = () => {
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <Link className="nav-link" to="/product/laptops">
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item active">
+              <Link className="nav-link" to="/product/mobiles">
                 Mobiles
               </Link>
             </li>
-            <li class="nav-item">
-              <Link className="nav-link" to="/product/laptops">
+            <li className="nav-item">
+              <Link className="nav-link" to="/product/watches">
                 Watches
               </Link>
             </li>
 
-            <li class="nav-item">
+            <li className="nav-item">
               <Link className="nav-link" to="/product/laptops">
                 Laptops
               </Link>
             </li>
-
+          </ul>
+          <ul className="navbar-nav ml-auto">
             <li className="nav-item">
               <Link className="nav-link" to="/user/login">
                 Login
               </Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <Link className="nav-link" to="/user/signup">
                 SignUp
               </Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <Link className="nav-link" to="/user/profile">
                 Profile
               </Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <Link className="nav-link" to="/user/profile">
-                Cart
+                <i className="fas fa-shopping-cart">
+                  <span className="badge badge-success">2</span>
+                </i>
               </Link>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <Link className="nav-link" to="/product/upload">
                 Upload
               </Link>

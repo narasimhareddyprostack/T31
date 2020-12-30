@@ -49,7 +49,9 @@ router.post("/upload", async (req, res) => {
       usage,
     });
     console.log(product);
+    console.log("one");
     product = await product.save();
+    console.log("two");
     res.status(200).json({
       result: "Success",
       product: product,
