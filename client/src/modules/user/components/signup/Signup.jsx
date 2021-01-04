@@ -1,5 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import getSignUp from "../../../../redux/user/user.actions";
 let Signup = () => {
+  let dispatch = useDispatch();
+  let [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  let inputHandler = (event) => {
+    setUser({
+      ...user,
+      [event.target.name]: event.target.value,
+    });
+  };
+  let signUpHandler = (event) => {
+    console.log(user);
+    event.preventDefault();
+    dispatch(getSignUp(user));
+  };
   return (
     <React.Fragment>
       <section className="p-3 bg-warning">
@@ -24,12 +43,15 @@ let Signup = () => {
                   <h4> Sign up - Form </h4>
                 </div>
                 <div className="card-body">
-                  <form>
+                  <form onSubmit={signUpHandler}>
                     <div className="form-group">
                       <input
                         type="text"
                         className="form-control"
                         placeholder="User Name"
+                        value={user.name}
+                        name="name"
+                        onChange={inputHandler}
                       />
                     </div>
                     <div className="form-group">
@@ -37,6 +59,9 @@ let Signup = () => {
                         type="email"
                         className="form-control"
                         placeholder="Email"
+                        value={user.email}
+                        name="email"
+                        onChange={inputHandler}
                       />
                     </div>
                     <div className="form-group">
@@ -44,6 +69,9 @@ let Signup = () => {
                         type="password"
                         className="form-control"
                         placeholder="Password"
+                        value={user.password}
+                        name="password"
+                        onChange={inputHandler}
                       />
                     </div>
                     <div className="form-group">
