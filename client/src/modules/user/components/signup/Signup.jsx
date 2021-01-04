@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import getSignUp from "../../../../redux/user/user.actions";
+import { getSignUp } from "../../../../redux/user/user.actions";
 let Signup = () => {
   let dispatch = useDispatch();
   let [user, setUser] = useState({
