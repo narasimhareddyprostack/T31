@@ -9,6 +9,7 @@ let getSignUp = (user) => {
   return async (dispatch) => {
     try {
       dispatch({ type: USER_REQUEST });
+      console.log("after Request");
       //consume the Backend API  : localhost:8000/user/register - POST
       //How to consume/invoke api in React. axios
       let config = {
@@ -17,10 +18,11 @@ let getSignUp = (user) => {
         },
       };
       let response = await axios.post(
-        "localhost:8000/user/register",
+        "http://localhost:8000/user/register",
         JSON.stringify(user),
         config
       );
+      console.log("after ...axios");
       dispatch({ type: USER_SUCCESS, payload: response.data });
     } catch (err) {
       dispatch({ type: USER_FAILURE, payload: err });
