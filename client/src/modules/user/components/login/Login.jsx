@@ -1,5 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 let Login = () => {
+  let [user, setUser] = useState({ email: "", password: "" });
+  let inputHandler = (event) => {
+    setUser({
+      ...user,
+      [event.target.name]: event.target.value,
+    });
+  };
+  let submitHandler = (event) => {
+    console.log(user);
+    //dispatch Action
+    event.preventDefault();
+  };
   return (
     <React.Fragment>
       <section className="p-3 bg-warning">
@@ -24,12 +36,15 @@ let Login = () => {
                   <h4> Login Form </h4>
                 </div>
                 <div className="card-body">
-                  <form>
+                  <form onSubmit={submitHandler}>
                     <div className="form-group">
                       <input
                         type="email"
                         className="form-control"
                         placeholder="Email"
+                        name="email"
+                        value={user.email}
+                        onChange={inputHandler}
                       />
                     </div>
                     <div className="form-group">
@@ -37,6 +52,9 @@ let Login = () => {
                         type="password"
                         className="form-control"
                         placeholder="Password"
+                        name="password"
+                        value={user.password}
+                        onChange={inputHandler}
                       />
                     </div>
                     <div className="form-group">

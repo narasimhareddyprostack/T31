@@ -15,7 +15,6 @@ let App = () => {
       <Provider store={store}>
         <Router>
           <Navbar />
-
           <Route exact path="/" component={Home}></Route>
           <Route exact path="/user/signup" component={Signup}></Route>
           <Route exact path="/user/login" component={Login}></Route>

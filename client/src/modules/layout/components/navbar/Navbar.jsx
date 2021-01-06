@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 let Navbar = () => {
   return (
     <React.Fragment>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <Link className="nav-link" to="/">
           Logo
         </Link>
