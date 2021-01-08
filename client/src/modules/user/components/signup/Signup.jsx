@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { getSignUp } from "../../../../redux/user/user.actions";
 let Signup = () => {
   let dispatch = useDispatch();
+  let history = useHistory();
   let [user, setUser] = useState({
     name: "",
     email: "",
@@ -17,7 +19,7 @@ let Signup = () => {
   let signUpHandler = (event) => {
     console.log(user);
     event.preventDefault();
-    dispatch(getSignUp(user));
+    dispatch(getSignUp(user, history));
   };
   return (
     <React.Fragment>

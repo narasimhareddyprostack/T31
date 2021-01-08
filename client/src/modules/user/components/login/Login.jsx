@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getLoginAction } from "../../../../redux/user/user.actions";
 let Login = () => {
   let [user, setUser] = useState({ email: "", password: "" });
+  let dispatch = useDispatch();
+  let history = useHistory();
   let inputHandler = (event) => {
     setUser({
       ...user,
@@ -10,6 +15,7 @@ let Login = () => {
   let submitHandler = (event) => {
     console.log(user);
     //dispatch Action
+    dispatch(getLoginAction(user, history));
     event.preventDefault();
   };
   return (

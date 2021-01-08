@@ -1,6 +1,13 @@
 // Reducer is pure function
 // state, action
-import { USER_REQUEST, USER_SUCCESS, USER_FAILURE } from "./user.actions";
+import {
+  USER_REQUEST,
+  USER_SUCCESS,
+  USER_FAILURE,
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+} from "./user.actions";
 
 let initialState = {
   user: null,
@@ -11,6 +18,16 @@ let initialState = {
 let userReducer = (state = initialState, action) => {
   let { payload } = action;
   switch (action.type) {
+    case LOGIN_REQUEST:
+      return { ...state, loading: true };
+    case LOGIN_SUCCESS:
+      return { ...state, loading: false, token: payload };
+    case LOGIN_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        errorMessage: payload,
+      };
     case USER_REQUEST:
       return { ...state, loading: true };
     case USER_SUCCESS:
