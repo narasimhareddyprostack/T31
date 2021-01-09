@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 });
 
 /*
-API : localhost:8000/product/upload
+API : http://localhost:8000/product/upload
 Method: Post
 Fields: name, brand, image, price, qty, category, desc, usage
 Type : private
