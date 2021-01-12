@@ -28,6 +28,19 @@ let Upload = () => {
       [event.target.name]: event.target.value,
     });
   };
+  let imageHander = (event) => {
+    let imageFile = event.target.file[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(imageFile);
+    reader.addEventListener("load", () => {
+      if (reader.result) {
+        setProduct({
+          ...product,
+          image: reader.result,
+        });
+      }
+    });
+  };
   return (
     <React.Fragment>
       <section className="p-3 bg-info">
@@ -76,12 +89,12 @@ let Upload = () => {
                   </div>
                   <div className="form-group">
                     <input
-                      type="text"
+                      type="file"
                       placeholder="Product Image"
                       className="form-control"
                       name="image"
                       value={product.image}
-                      onChange={inputHander}
+                      onChange={imageHander}
                     />
                   </div>
                   <div className="form-group">
