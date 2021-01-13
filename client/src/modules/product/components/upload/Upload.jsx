@@ -29,11 +29,12 @@ let Upload = () => {
     });
   };
   let imageHander = (event) => {
-    let imageFile = event.target.file[0];
+    let imageFile = event.target.files[0];
     let reader = new FileReader();
     reader.readAsDataURL(imageFile);
     reader.addEventListener("load", () => {
       if (reader.result) {
+        // console.log(reader.result);
         setProduct({
           ...product,
           image: reader.result,
@@ -93,7 +94,6 @@ let Upload = () => {
                       placeholder="Product Image"
                       className="form-control"
                       name="image"
-                      value={product.image}
                       onChange={imageHander}
                     />
                   </div>

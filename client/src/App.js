@@ -7,6 +7,8 @@ import Home from "./modules/layout/components/home/Home";
 import Login from "./modules/user/components/login/Login";
 import Profile from "./modules/user/components/profile/Profile";
 import Upload from "./modules/product/components/upload/Upload";
+import Laptops from "./modules/product/components/laptops/Laptops";
+import Watches from "./modules/product/components/watches/Watches";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 let App = () => {
@@ -20,6 +22,8 @@ let App = () => {
           <Route exact path="/user/login" component={Login}></Route>
           <Route exact path="/user/profile" component={Profile}></Route>
           <Route exact path="/product/upload" component={Upload}></Route>
+          <Route exact path="/product/laptops" component={Laptops}></Route>
+          <Route exact path="/product/watches" component={Watches}></Route>
         </Router>
       </Provider>
     </React.Fragment>
