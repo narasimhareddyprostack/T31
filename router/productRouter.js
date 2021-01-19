@@ -101,4 +101,21 @@ router.get("/watches", async (req, res) => {
     res.status(500).json({ errors: [{ msg: " Server Error" }] });
   }
 });
+/*
+API : localhost:8000/product/:id
+Method: Get
+Type : private
+*/
+router.get("/:id", async (req, res) => {
+  try {
+    let productId = req.params.id;
+    console.log(productId);
+    let product = await Product.findOne({ _id: productId });
+    console.log(product);
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({ errors: [{ msg: " Server Error" }] });
+  }
+});
+
 module.exports = router;

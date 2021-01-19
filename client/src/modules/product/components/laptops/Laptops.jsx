@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { getLaptopAction } from "../../../../redux/product/product.actions";
+import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 let Laptops = () => {
@@ -26,7 +27,7 @@ let Laptops = () => {
           </div>
         </div>
       </section>
-      {/* <pre>{JSON.stringify(product)}</pre> */}
+      <pre>{JSON.stringify(product)}</pre>
       <section>
         <div className="container">
           <div className="row">
@@ -35,7 +36,9 @@ let Laptops = () => {
                 <div className="col-md-3 mt-3">
                   <div className="card">
                     <div className="card-header">
-                      <img src={singleProduct.image} className="img-fluid" />
+                      <Link to={`/product/${singleProduct._id}`}>
+                        <img src={singleProduct.image} className="img-fluid" />
+                      </Link>
                     </div>
                     <div className="card-body">
                       <ul className="list-group">
