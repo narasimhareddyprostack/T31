@@ -3,13 +3,6 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../model/User");
 const jwt = require("jsonwebtoken");
-
-/*
-localhost:8000/user/register
-localhost:8000/user/login
-localhost:8000/user/all  
-*/
-
 /*
 Name API : localhost:8000/user/register
 Fields   : NAME, EMAIL, PASSWORD 
@@ -59,8 +52,7 @@ router.post("/login", async (req, res) => {
   }
   let payload = {
     user: {
-      email: user.email,
-      password: password,
+      id: user.id,
     },
   };
   jwt.sign(payload, process.env.S_KEY, (err, token) => {
@@ -72,8 +64,17 @@ router.post("/login", async (req, res) => {
   });
 });
 /*
-Name API : localhost:8000/user/all
+Name API : localhost:8000/user/
 METHOD: GET
 */
-router.get("/all", () => {});
+router.get("/", async (req, res) => {
+  try {
+    let user = await User.findById(req.user.id);
+    res.status(200).json(user);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ errors: "Server Error" });
+  }
+});
+
 module.exports = router;

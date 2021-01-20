@@ -22,8 +22,10 @@ let App = () => {
           <Navbar />
           <Route exact path="/" component={Home}></Route>
           <Route exact path="/user/signup" component={Signup}></Route>
+
           <Route exact path="/user/login" component={Login}></Route>
           <Route exact path="/user/profile" component={Profile}></Route>
+
           <Route exact path="/product/upload" component={Upload}></Route>
           <Route exact path="/product/laptops" component={Laptops}></Route>
           <Route exact path="/product/watches" component={Watches}></Route>

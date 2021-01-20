@@ -21,8 +21,10 @@ let userReducer = (state = initialState, action) => {
     case LOGIN_REQUEST:
       return { ...state, loading: true };
     case LOGIN_SUCCESS:
+      localStorage.setItem("token", payload.token);
       return { ...state, loading: false, token: payload };
     case LOGIN_FAILURE:
+      localStorage.removeItem("token");
       return {
         ...state,
         loading: false,

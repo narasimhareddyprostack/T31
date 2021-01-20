@@ -13,7 +13,7 @@ let Watches = () => {
   let { product } = products;
   useEffect(() => {
     dispatch(getWatchAction());
-  }, []);
+  }, [dispatch]);
 
   //dispatch actions
   return (
