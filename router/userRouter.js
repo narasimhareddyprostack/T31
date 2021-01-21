@@ -1,8 +1,10 @@
 const express = require("express");
+
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../model/User");
 const jwt = require("jsonwebtoken");
+const authenticate = require("../middleware/authenticate");
 /*
 Name API : localhost:8000/user/register
 Fields   : NAME, EMAIL, PASSWORD 
@@ -65,16 +67,18 @@ router.post("/login", async (req, res) => {
 });
 /*
 Name API : localhost:8000/user/
-METHOD: GET
+   Fields:  No Fields
+   METHOD: GET
+   Access Type: Private
 */
-router.get("/", async (req, res) => {
+router.get("/", authenticate, async (req, res) => {
   try {
-    let user = await User.findById(req.user.id);
+    console.log(req.user.id);
+    let user = await User.findById(req.user.id).select("-password");
     res.status(200).json(user);
   } catch (error) {
     console.log(error);
     res.status(500).json({ errors: "Server Error" });
   }
 });
-
 module.exports = router;
