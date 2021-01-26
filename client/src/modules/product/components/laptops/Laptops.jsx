@@ -13,7 +13,7 @@ let Laptops = () => {
   let { product } = products;
   useEffect(() => {
     dispatch(getLaptopAction());
-  }, []);
+  });
 
   //dispatch actions
   return (

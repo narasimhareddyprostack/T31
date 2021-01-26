@@ -45,7 +45,7 @@ let userReducer = (state = initialState, action) => {
         errorMessage: payload,
       };
 
-    case GET_USER_REQUEST:
+    /* case GET_USER_REQUEST:
       return { ...state, loading: true };
     case GET_USER_SUCCESS:
       localStorage.setItem("user", payload.user);
@@ -61,7 +61,7 @@ let userReducer = (state = initialState, action) => {
         loading: false,
         errorMessage: payload,
         isAuthenticated: false,
-      };
+      }; */
     default:
       return state;
   }

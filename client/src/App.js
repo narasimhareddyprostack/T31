@@ -19,10 +19,11 @@ import store from "./redux/store";
 import { getUserInfo } from "./redux/user/user.actions";
 
 let App = () => {
-  let dispatch = useDispatch();
+  /*   let dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserInfo());
-  }, [dispatch]);
+  }, [dispatch]); */
+
   return (
     <React.Fragment>
       <Provider store={store}>

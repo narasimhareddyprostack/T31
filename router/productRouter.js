@@ -106,7 +106,7 @@ API : localhost:8000/product/:id
 Method: Get
 Type : private
 */
-router.get("/:id", async (req, res) => {
+router.get("/:id",  async (req, res) => {
   try {
     let productId = req.params.id;
     console.log(productId);

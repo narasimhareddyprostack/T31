@@ -13,7 +13,7 @@ let Mobiles = () => {
   let { product } = products;
   useEffect(() => {
     dispatch(getMobileAction());
-  }, []);
+  }, [dispatch]);
 
   //dispatch actions
   return (

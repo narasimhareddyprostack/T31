@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setAuth } from "./Auth/setAuth";
 //action types
 const USER_REQUEST = "USER_REQUEST";
 const USER_SUCCESS = "USER_SUCCESS";
@@ -66,7 +67,13 @@ let getSignUp = (user, history) => {
 let getUserInfo = () => {
   return async (dispatch) => {
     try {
+      if (localStorage.token) {
+        //below funciton - obj is to the http header
+        setAuth(localStorage.getItem("token"));
+      }
+
       dispatch({ type: GET_USER_REQUEST });
+      // below api required HTTP Headers
       let user = await axios.get(`http://localhost:8000/user/`);
       dispatch({ type: GET_USER_SUCCESS, payload: user });
     } catch (err) {
@@ -76,7 +83,7 @@ let getUserInfo = () => {
 };
 export {
   getSignUp,
-  getUserInfo,
+  // getUserInfo,
   getLoginAction,
   USER_REQUEST,
   USER_SUCCESS,
