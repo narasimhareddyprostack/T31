@@ -8,6 +8,10 @@ const LOGIN_REQUEST = "LOGIN_REQUEST";
 const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 const LOGIN_FAILURE = "LOGIN_FAILURE";
 
+const GET_USER_REQUEST = "GET_USER_REQUEST";
+const GET_USER_SUCCESS = "GET_USER_SUCCESS";
+const GET_USER_FAILURE = "GET_USER_FAILURE";
+
 //Login Actions
 let getLoginAction = (user, history) => {
   return async (dispatch) => {
@@ -25,6 +29,7 @@ let getLoginAction = (user, history) => {
         config
       );
       dispatch({ type: LOGIN_SUCCESS, payload: response.data });
+      // dispatch(getUserInfo());
       history.push("/");
     } catch (err) {
       dispatch({ type: LOGIN_FAILURE, payload: err });
@@ -58,13 +63,28 @@ let getSignUp = (user, history) => {
   };
 };
 
+let getUserInfo = () => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: GET_USER_REQUEST });
+      let user = await axios.get(`http://localhost:8000/user/`);
+      dispatch({ type: GET_USER_SUCCESS, payload: user });
+    } catch (err) {
+      dispatch({ type: GET_USER_FAILURE, payload: err });
+    }
+  };
+};
 export {
   getSignUp,
+  getUserInfo,
+  getLoginAction,
   USER_REQUEST,
   USER_SUCCESS,
   USER_FAILURE,
-  getLoginAction,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  GET_USER_REQUEST,
+  GET_USER_SUCCESS,
+  GET_USER_FAILURE,
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./modules/layout/components/navbar/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -11,13 +11,22 @@ import ProductDetails from "./modules/product/components/productDetails/ProductD
 import Laptops from "./modules/product/components/laptops/Laptops";
 import Watches from "./modules/product/components/watches/Watches";
 import Mobiles from "./modules/product/components/mobiles/Mobiles";
+import { useDispatch } from "react-redux";
 
 import { Provider } from "react-redux";
 import store from "./redux/store";
+
+import { getUserInfo } from "./redux/user/user.actions";
+
 let App = () => {
+  let dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserInfo());
+  }, [dispatch]);
   return (
     <React.Fragment>
       <Provider store={store}>
+        <App />
         <Router>
           <Navbar />
           <Route exact path="/" component={Home}></Route>

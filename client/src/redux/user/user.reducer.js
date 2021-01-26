@@ -7,11 +7,15 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  GET_USER_SUCCESS,
+  GET_USER_FAILURE,
+  GET_USER_REQUEST,
 } from "./user.actions";
 
 let initialState = {
   user: null,
   loading: false,
+  isAuthenticated: false,
   token: null,
   errorMessage: null,
 };
@@ -39,6 +43,24 @@ let userReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         errorMessage: payload,
+      };
+
+    case GET_USER_REQUEST:
+      return { ...state, loading: true };
+    case GET_USER_SUCCESS:
+      localStorage.setItem("user", payload.user);
+      return {
+        ...state,
+        loading: false,
+        user: payload.user,
+        isAuthenticated: true,
+      };
+    case GET_USER_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        errorMessage: payload,
+        isAuthenticated: false,
       };
     default:
       return state;
